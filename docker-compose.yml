@@ -1,6 +1,4 @@
-name: fullstack-project
-
-services:
+  services:
   gateway:
     image: nginx:alpine
     container_name: gateway
@@ -19,8 +17,8 @@ services:
       dockerfile: Dockerfile
     image: my-frontend:latest
     container_name: frontend
-    expose:
-      - "80"
+    ports:
+      - "8081:80"   # Expose frontend to host on 8081
     depends_on:
       - backend
       - ai-service
@@ -31,8 +29,8 @@ services:
       dockerfile: Dockerfile
     image: my-backend:latest
     container_name: backend
-    expose:
-      - "5000"
+    ports:
+      - "8000:8000"   # Expose backend to host
     depends_on:
       - ai-service
 
@@ -42,5 +40,5 @@ services:
       dockerfile: Dockerfile
     image: my-ai-service:latest
     container_name: ai-service
-    expose:
-      - "6000"
+    ports:
+      - "9000:9000"   # Expose AI service to host
