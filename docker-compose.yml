@@ -18,7 +18,7 @@
     image: my-frontend:latest
     container_name: frontend
     ports:
-      - "8081:80"   # Expose frontend to host on 8081
+      - "80"   # Expose frontend to host on 8081
     depends_on:
       - backend
       - ai-service
@@ -30,7 +30,7 @@
     image: my-backend:latest
     container_name: backend
     ports:
-      - "8000:8000"   # Expose backend to host
+      - "8000"   # Expose backend to host
     depends_on:
       - ai-service
 
@@ -41,4 +41,4 @@
     image: my-ai-service:latest
     container_name: ai-service
     ports:
-      - "9000:9000"   # Expose AI service to host
+      - "9000"   # Expose AI service to host
