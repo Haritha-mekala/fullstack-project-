@@ -19,7 +19,7 @@ services:
       dockerfile: Dockerfile
     image: my-frontend:latest
     container_name: frontend-1
-    exports:
+    ports:
      - "80:80"
     # No "ports" → only accessible inside Docker network
     depends_on:
@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
     image: my-backend:latest
     container_name: backend-1
-    exports:
+    ports:
      - "8000:8000"
     # No "ports" → only accessible inside Docker network
     depends_on:
@@ -44,6 +44,6 @@ services:
       dockerfile: Dockerfile
     image: my-ai-service:latest
     container_name: ai-service-1
-    exports:
+    ports:
      - "9000:9000"
     # No "ports" → only accessible inside Docker network
