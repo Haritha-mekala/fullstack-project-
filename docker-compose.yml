@@ -3,7 +3,7 @@ version: "3.9"
 services:
   gateway:
     image: nginx:alpine
-    container_name: gateway
+    container_name: gateway-1
     ports:
       - "80:80"   # Only expose gateway
     volumes:
@@ -18,7 +18,9 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     image: my-frontend:latest
-    container_name: frontend
+    container_name: frontend-1
+    exports:
+     - "80:80"
     # No "ports" → only accessible inside Docker network
     depends_on:
       - backend
@@ -29,7 +31,9 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     image: my-backend:latest
-    container_name: backend
+    container_name: backend-1
+    exports:
+     - "8000:8000"
     # No "ports" → only accessible inside Docker network
     depends_on:
       - ai-service
@@ -39,5 +43,7 @@ services:
       context: ./ai-service
       dockerfile: Dockerfile
     image: my-ai-service:latest
-    container_name: ai-service
+    container_name: ai-service-1
+    exports:
+     - "9000:9000"
     # No "ports" → only accessible inside Docker network
