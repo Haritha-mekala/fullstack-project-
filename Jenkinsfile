@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'job1'}
+    agent { label 'job1' }
 
     environment {
         COMPOSE_FILE = "docker-compose.yml"
