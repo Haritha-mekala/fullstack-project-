@@ -18,7 +18,7 @@ async def health():
 
 @app.get("/api/hello")
 async def hello():
-    return {"message": "Hello from backend!"}
+    return {"message": "Hello, this is Priacc Innovations!"}
 
 
 @app.post("/api/sentiment")
